@@ -30,6 +30,7 @@ int main()
 	
 	do
 	{
+		cout << "\n\n\n";
 		cout << "Enter any of the following available choices" << endl;
 		cout << "1 - Add Edge(s)" << endl;
 		cout << "2 - Delete Edge(s)" << endl;
@@ -54,20 +55,10 @@ int main()
 				break;
 
 			case 4: 
-			{
-				int src;
-				cout << "Enter the source node for DFS...";
-				cin >> src;
-				list<int> outputList(dag.vertices()*dag.vertices());
-				dag.dfs(src,outputList);
-				cout << "DFS from "	<< src << " : ";
-				for(list<int>::iterator it = outputList.begin(); it != outputList.end(); it++)
-					cout << *it << " , " ;
-				cout << endl;
+				dag.performDfsFromGivenSource();	
 				break;
-			}
 				
-			case 5: cout << ( dag.doesCycleExist()? "Cycle Exits": "No Cycle found") << endl;
+			case 5: cout << ( dag.doesCycleExist()? "\nCycle Exits!!\n": "\nNo Cycle found!!\n") << endl;
 				break;		
 						
 			case 9: exit(0);
