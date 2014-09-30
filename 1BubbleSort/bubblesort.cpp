@@ -18,8 +18,8 @@ int main()
 		system("cls");
 	#endif
 
-	cout << "\n---------------------- Computational Lab - Assignment 1: Bubble Sort ---------------------------";
-	cout << "\n------------------- By: Pankaj Azad, Roll Number - 14M517, M.Tech Ist Sem ----------------------\n\n\n" ;
+	cout << "\nComputational Lab - Assignment 1: Bubble Sort";
+	cout << "\nBy: Pankaj Azad, Roll Number - 14M517, M.Tech Ist Sem\n\n\n" ;
 	
 
 	cout << "Enter the number of elements..." << endl;
