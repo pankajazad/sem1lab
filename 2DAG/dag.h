@@ -20,7 +20,8 @@ class Dag
 		bool deleteEdge(int src, int dst);
 		void deleteEdges();
 		
-		void dfs(int sourceVertex, list<int> & outputList);
+		vector<int>& performDfsFromGivenSource();
+		void dfs(int sourceVertex);
 		
 		bool doesCycleExist();
 		bool visit(int vertex);
@@ -32,4 +33,5 @@ class Dag
 		int numberOfVertices;
 		list<int>* adjList;
 		char* colorList;
+		vector<int> dfsOutputList;
 };
