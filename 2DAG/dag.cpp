@@ -87,18 +87,36 @@ void Dag::deleteEdges()
 		}while(src!=-1);
 }
 
-void Dag::dfs(int sourceVertex, list<int> & outputList)
+vector<int>& Dag::performDfsFromGivenSource()
 {
+	int src;
+	cout << "Enter the source node for DFS...";
+	cin >> src;
+	
+	dfsOutputList.clear();
 	for(int i=0;i<numberOfVertices;i++)
 	{
 		colorList[i] = WHITE;
 	}
+	dfs(src);
+	cout << "DFS from "	<< src << " : ";
+	
+	for(int i=0;i<dfsOutputList.size();i++)
+		cout << dfsOutputList[i] << ", ";
+	
+	cout << endl;
+	return dfsOutputList;
+}
+
+void Dag::dfs(int sourceVertex)
+{
 	colorList[sourceVertex] = BLACK;
-	outputList.push_back(sourceVertex);
+	dfsOutputList.push_back(sourceVertex);
+	
 	for(list<int>::iterator it = adjList[sourceVertex].begin(); it != adjList[sourceVertex].end(); ++it)
 		{
 			if ( colorList[*it] != BLACK )
-				dfs(*it,outputList);
+				dfs(*it);
 		}
 }
 
@@ -131,7 +149,7 @@ bool Dag::visit(int v)
 			
 			if ( colorList[u] == GREY)
 				{
-				cout << " Edge " << v << "," << u << " is involved in cycle" << endl;
+				cout << "Edge " << v << "," << u << " is involved in cycle" << endl;
 				return true;
 				}
 			else if (colorList[u] == WHITE)
