@@ -6,11 +6,13 @@ Dag::Dag(int vertices)
 	numberOfEdges	 = 0;
 	
 	adjList = new list<int>[numberOfVertices];
+	colorList = new char[numberOfVertices];
 }
 
 Dag::~Dag()
 {
-
+	delete adjList;
+	delete colorList;
 }
 
 bool Dag::addEdge(int src, int dst)
@@ -83,5 +85,63 @@ void Dag::deleteEdges()
 				cout <<"Failed to add this edge, (Try again with vertex numbers between range (0,TotalVertices -1))"  << endl;
 				
 		}while(src!=-1);
+}
+
+void Dag::dfs(int sourceVertex, list<int> & outputList)
+{
+	for(int i=0;i<numberOfVertices;i++)
+	{
+		colorList[i] = WHITE;
+	}
+	colorList[sourceVertex] = BLACK;
+	outputList.push_back(sourceVertex);
+	for(list<int>::iterator it = adjList[sourceVertex].begin(); it != adjList[sourceVertex].end(); ++it)
+		{
+			if ( colorList[*it] != BLACK )
+				dfs(*it,outputList);
+		}
+}
+
+bool Dag::doesCycleExist()
+{
+	for(int i=0;i<numberOfVertices;i++)
+	{
+		colorList[i] = WHITE;
+	}
+	
+	for(int i=0;i<numberOfVertices;i++)
+	{
+		if( colorList[i] == WHITE )
+			{
+				if ( visit(i) )
+					return true;
+			}
+	}
+	return false;	
+}
+
+bool Dag::visit(int v)
+{
+	int u;
+	colorList[v] = GREY;
+	
+	for (list<int>::iterator it = adjList[v].begin(); it != adjList[v].end(); ++it)
+		{
+			u = *it;
+			
+			if ( colorList[u] == GREY)
+				{
+				cout << " Edge " << v << "," << u << " is involved in cycle" << endl;
+				return true;
+				}
+			else if (colorList[u] == WHITE)
+				{
+					if ( visit(u) )
+						return true;
+				}
+		}
+	
+	colorList[v] = BLACK;
+	return false;
 }
 
