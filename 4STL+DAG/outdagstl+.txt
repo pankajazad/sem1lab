@@ -1,0 +1,232 @@
+Computational Lab - Assignment 4: Directed Acyclic Graph (DAG) with STL-Plus Lib
+By: Pankaj Azad, Roll Number - 14M517, M.Tech Ist Sem
+
+
+
+Enter number of vertices...13
+Enter the edges (E.g. 4 3 means a directed edge from 4 to 3). -1 -1 as input stops the process
+0 5
+0 1
+0 6
+2 0
+2 3
+3 5
+5 4
+6 4
+6 9
+7 6
+8 7
+9 11
+9 12
+9 10
+11 12
+-1 -1
+
+
+
+Enter any of the following available choices
+1 - Add Edge(s)
+2 - Delete Edge(s)
+3 - Print Adjacency list and draw graph (generates a png image)
+4 - Depth First Search (DFS)
+5 - Detect existence of cycle
+9 - Exit
+3
+DAG: 13 Vertices and 15 Edges 
+[0] => 5 1 6 
+[1] => 
+[2] => 0 3 
+[3] => 5 
+[4] => 
+[5] => 4 
+[6] => 4 9 
+[7] => 6 
+[8] => 7 
+[9] => 11 12 10 
+[10] => 
+[11] => 12 
+[12] => 
+
+
+
+Enter any of the following available choices
+1 - Add Edge(s)
+2 - Delete Edge(s)
+3 - Print Adjacency list and draw graph (generates a png image)
+4 - Depth First Search (DFS)
+5 - Detect existence of cycle
+9 - Exit
+5
+
+No Cycle found!!
+
+
+
+
+Enter any of the following available choices
+1 - Add Edge(s)
+2 - Delete Edge(s)
+3 - Print Adjacency list and draw graph (generates a png image)
+4 - Depth First Search (DFS)
+5 - Detect existence of cycle
+9 - Exit
+1
+Enter the edges (E.g. 4 3 means a directed edge from 4 to 3). -1 -1 as input stops the process
+4 2 
+-1 -1
+
+
+
+Enter any of the following available choices
+1 - Add Edge(s)
+2 - Delete Edge(s)
+3 - Print Adjacency list and draw graph (generates a png image)
+4 - Depth First Search (DFS)
+5 - Detect existence of cycle
+9 - Exit
+3
+DAG: 13 Vertices and 16 Edges 
+[0] => 5 1 6 
+[1] => 
+[2] => 0 3 
+[3] => 5 
+[4] => 2 
+[5] => 4 
+[6] => 4 9 
+[7] => 6 
+[8] => 7 
+[9] => 11 12 10 
+[10] => 
+[11] => 12 
+[12] => 
+
+
+
+Enter any of the following available choices
+1 - Add Edge(s)
+2 - Delete Edge(s)
+3 - Print Adjacency list and draw graph (generates a png image)
+4 - Depth First Search (DFS)
+5 - Detect existence of cycle
+9 - Exit
+5
+
+Cycle Exits!!
+
+
+
+
+Enter any of the following available choices
+1 - Add Edge(s)
+2 - Delete Edge(s)
+3 - Print Adjacency list and draw graph (generates a png image)
+4 - Depth First Search (DFS)
+5 - Detect existence of cycle
+9 - Exit
+2
+Enter the edges (E.g. 4 3 means a directed edge from 4 to 3). -1 -1 as input stops the process
+3 5
+-1 -1
+
+
+
+Enter any of the following available choices
+1 - Add Edge(s)
+2 - Delete Edge(s)
+3 - Print Adjacency list and draw graph (generates a png image)
+4 - Depth First Search (DFS)
+5 - Detect existence of cycle
+9 - Exit
+5
+
+Cycle Exits!!
+
+
+
+
+Enter any of the following available choices
+1 - Add Edge(s)
+2 - Delete Edge(s)
+3 - Print Adjacency list and draw graph (generates a png image)
+4 - Depth First Search (DFS)
+5 - Detect existence of cycle
+9 - Exit
+2
+Enter the edges (E.g. 4 3 means a directed edge from 4 to 3). -1 -1 as input stops the process
+2 0
+-1 -1
+
+
+
+Enter any of the following available choices
+1 - Add Edge(s)
+2 - Delete Edge(s)
+3 - Print Adjacency list and draw graph (generates a png image)
+4 - Depth First Search (DFS)
+5 - Detect existence of cycle
+9 - Exit
+5
+
+No Cycle found!!
+
+
+
+
+Enter any of the following available choices
+1 - Add Edge(s)
+2 - Delete Edge(s)
+3 - Print Adjacency list and draw graph (generates a png image)
+4 - Depth First Search (DFS)
+5 - Detect existence of cycle
+9 - Exit
+3
+DAG: 13 Vertices and 14 Edges 
+[0] => 5 1 6 
+[1] => 
+[2] => 3 
+[3] => 
+[4] => 2 
+[5] => 4 
+[6] => 4 9 
+[7] => 6 
+[8] => 7 
+[9] => 11 12 10 
+[10] => 
+[11] => 12 
+[12] => 
+
+
+
+Enter any of the following available choices
+1 - Add Edge(s)
+2 - Delete Edge(s)
+3 - Print Adjacency list and draw graph (generates a png image)
+4 - Depth First Search (DFS)
+5 - Detect existence of cycle
+9 - Exit
+4
+Enter the source node for DFS...0
+
+
+
+
+
+
+
+
+
+
+
+DFS from 0 : 0, 5, 4, 2, 3, 1, 6, 9, 11, 12, 10, 
+
+
+
+Enter any of the following available choices
+1 - Add Edge(s)
+2 - Delete Edge(s)
+3 - Print Adjacency list and draw graph (generates a png image)
+4 - Depth First Search (DFS)
+5 - Detect existence of cycle
+9 - Exit
+
+9
