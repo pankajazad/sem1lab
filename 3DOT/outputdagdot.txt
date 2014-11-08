@@ -1,0 +1,185 @@
+Computational Lab - Assignment 3: Directed Acyclic Graph (DAG) with DOT visualization
+By: Pankaj Azad, Roll Number - 14M517, M.Tech Ist Sem
+
+
+
+Enter number of vertices...13
+Enter the edges (E.g. 4 3 means a directed edge from 4 to 3). -1 -1 as input stops the process
+0 5
+0 1
+0 6
+2 0
+2 3
+3 5
+5 4
+6 4
+6 9
+7 6
+8 7
+9 11
+9 12
+9 10
+11 12
+-1 -1
+
+
+
+Enter any of the following available choices
+1 - Add Edge(s)
+2 - Delete Edge(s)
+3 - Print Adjacency list and draw graph (generates a png image)
+4 - Depth First Search (DFS)
+5 - Detect existence of cycle
+9 - Exit
+3
+DAG: 13 Vertices and 15 Edges 
+[0] => 5 1 6 
+[1] => 
+[2] => 0 3 
+[3] => 5 
+[4] => 
+[5] => 4 
+[6] => 4 9 
+[7] => 6 
+[8] => 7 
+[9] => 11 12 10 
+[10] => 
+[11] => 12 
+[12] => 
+
+
+
+
+Enter any of the following available choices
+1 - Add Edge(s)
+2 - Delete Edge(s)
+3 - Print Adjacency list and draw graph (generates a png image)
+4 - Depth First Search (DFS)
+5 - Detect existence of cycle
+9 - Exit
+
+(ristretto:7162): GLib-CRITICAL **: Source ID 56 was not found when attempting to remove it
+4
+Enter the source node for DFS...2
+DFS from 2 : 2, 0, 5, 4, 1, 6, 9, 11, 12, 10, 3, 
+
+
+
+Enter any of the following available choices
+1 - Add Edge(s)
+2 - Delete Edge(s)
+3 - Print Adjacency list and draw graph (generates a png image)
+4 - Depth First Search (DFS)
+5 - Detect existence of cycle
+9 - Exit
+Gtk-Message: (for origin information, set GTK_DEBUG): failed to retrieve property `GtkRange::activate-slider' of type `gboolean' from rc file value "((GString*) 0xb8a5a7c0)" of type `GString'
+5
+
+No Cycle found!!
+
+
+
+
+Enter any of the following available choices
+1 - Add Edge(s)
+2 - Delete Edge(s)
+3 - Print Adjacency list and draw graph (generates a png image)
+4 - Depth First Search (DFS)
+5 - Detect existence of cycle
+9 - Exit
+1
+Enter the edges (E.g. 4 3 means a directed edge from 4 to 3). -1 -1 as input stops the process
+12 0
+-1 -1
+
+
+
+Enter any of the following available choices
+1 - Add Edge(s)
+2 - Delete Edge(s)
+3 - Print Adjacency list and draw graph (generates a png image)
+4 - Depth First Search (DFS)
+5 - Detect existence of cycle
+9 - Exit
+5
+Edge 12,0 is involved in cycle
+
+Cycle Exits!!
+
+
+
+
+Enter any of the following available choices
+1 - Add Edge(s)
+2 - Delete Edge(s)
+3 - Print Adjacency list and draw graph (generates a png image)
+4 - Depth First Search (DFS)
+5 - Detect existence of cycle
+9 - Exit
+3
+DAG: 13 Vertices and 16 Edges 
+[0] => 5 1 6 
+[1] => 
+[2] => 0 3 
+[3] => 5 
+[4] => 
+[5] => 4 
+[6] => 4 9 
+[7] => 6 
+[8] => 7 
+[9] => 11 12 10 
+[10] => 
+[11] => 12 
+[12] => 0 
+
+
+
+
+Enter any of the following available choices
+1 - Add Edge(s)
+2 - Delete Edge(s)
+3 - Print Adjacency list and draw graph (generates a png image)
+4 - Depth First Search (DFS)
+5 - Detect existence of cycle
+9 - Exit
+2
+Enter the edges (E.g. 4 3 means a directed edge from 4 to 3). -1 -1 as input stops the process
+0 6
+-1 -1
+
+
+
+Enter any of the following available choices
+1 - Add Edge(s)
+2 - Delete Edge(s)
+3 - Print Adjacency list and draw graph (generates a png image)
+4 - Depth First Search (DFS)
+5 - Detect existence of cycle
+9 - Exit
+3
+DAG: 13 Vertices and 15 Edges 
+[0] => 5 1 
+[1] => 
+[2] => 0 3 
+[3] => 5 
+[4] => 
+[5] => 4 
+[6] => 4 9 
+[7] => 6 
+[8] => 7 
+[9] => 11 12 10 
+[10] => 
+[11] => 12 
+[12] => 0 
+
+
+
+
+Enter any of the following available choices
+1 - Add Edge(s)
+2 - Delete Edge(s)
+3 - Print Adjacency list and draw graph (generates a png image)
+4 - Depth First Search (DFS)
+5 - Detect existence of cycle
+9 - Exit
+9

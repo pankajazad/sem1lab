@@ -1,6 +1,3 @@
-// build command
-// g++ -g -Istlplus3-03-11/containers -Istlplus3-03-11/persistence -Istlplus3-03-11/portability -Lstlplus3-03-11 -lstlplus3-03-11 dag.cpp main.cpp -o dag
-
 #include <iostream>
 #include <cstdlib>
 #include <cstdio>
@@ -20,7 +17,7 @@ int main()
 
 	CLEAR_SCREEN;
 
-	cout << "\nComputational Lab - Assignment 4: Directed Acyclic Graph (DAG) with STL-Plus Lib";
+	cout << "\nComputational Lab - Assignment 3: Directed Acyclic Graph (DAG) with DOT visualization";
 	cout << "\nBy: Pankaj Azad, Roll Number - 14M517, M.Tech Ist Sem\n\n\n" << endl;
 	
 	cout << "Enter number of vertices...";
@@ -54,7 +51,7 @@ int main()
 				break;
 		
 			case 3: 
-				dag.print(cout);
+				cout << dag << endl;
 				break;
 
 			case 4: 

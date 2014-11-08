@@ -9,23 +9,15 @@ using namespace std;
 Dag::Dag(int vertices)
 {
 	numberOfVertices = vertices;
-	
-	// Add nodes/vertices
-	IntBoolGraph::iterator node;
-	for (int i=0;i<numberOfVertices;i++)
-		{
-		IntBoolGraph::iterator node = graph.insert(i);
-		nodes.push_back(node);
-		}
 	numberOfEdges	 = 0;
 	
-	// adjList = new list<int>[numberOfVertices];
+	adjList = new list<int>[numberOfVertices];
 	colorList = new char[numberOfVertices];
 }
 
 Dag::~Dag()
 {
-	// delete adjList;
+	delete adjList;
 	delete colorList;
 }
 
@@ -34,8 +26,7 @@ bool Dag::addEdge(int src, int dst)
 	bool ret = false;
 	if( src < numberOfVertices && dst < numberOfVertices)
 		{
-		IntBoolGraph::arc_iterator edge = graph.arc_insert(nodes[src],nodes[dst],true);
-		arcs.push_back(edge);
+		adjList[src].push_back(dst);
 		numberOfEdges++;
 		ret = true;
 		}
@@ -47,32 +38,19 @@ bool Dag::deleteEdge(int src, int dst)
 	bool ret = false;
 	if( src < numberOfVertices && dst < numberOfVertices)
 		{
-		//locate and remove the edge
-		IntBoolGraph::arc_iterator edge;
-		IntBoolGraph::iterator from;
-		IntBoolGraph::iterator to;
-		for (int i=0;i<numberOfEdges; i++)
-			{
-				from = graph.arc_from(arcs[i]);
-				to = graph.arc_to(arcs[i]);
-				if (*from == src && *to == dst)
-				{
-					graph.arc_erase(arcs[i]);
-					numberOfEdges--;
-					ret = true;
-					break;
-				}		
-			}
+		adjList[src].remove(dst);
+		numberOfEdges--;
+		ret = true;
 		}
 	return ret;
 }
 
-void Dag::print(ostream &out)
-{	
+ostream &operator << (ostream &out, const Dag &dag)
+{
 	static int dotfileNumber=0;
 	dotfileNumber++;
-
-	out << "DAG: " << numberOfVertices << " Vertices and " << numberOfEdges << " Edges " << endl;
+	
+	out << "DAG: " << dag.numberOfVertices << " Vertices and " << dag.numberOfEdges << " Edges " << endl;
 	
 	ofstream dotfile;
 	ostringstream dotfileName;
@@ -80,20 +58,16 @@ void Dag::print(ostream &out)
 	dotfile.open(dotfileName.str().c_str(),ofstream::out);
 	dotfile << "digraph G {" << endl;
 	
-	for (int index = 0; index < numberOfVertices; index++)
+	for (int index = 0; index < dag.numberOfVertices; index++)
 		{
 		out << "["<< index << "] => " ;
-		
-			for(int j = 0; j< graph.fanout(nodes[index]); j++)
+	 	for (list<int>::iterator it=dag.adjList[index].begin(); it != dag.adjList[index].end(); ++it)
 			{
-				IntBoolGraph::arc_iterator edge = graph.output(nodes[index],j);
-				IntBoolGraph::iterator toNode = graph.arc_to(edge);
-				out << *toNode << " " ;
-				dotfile << "\t "<< index << " -> " << *toNode << ";" << endl;
+				out << *it << " " ;
+				dotfile << "\t "<< index << " -> " << *it << ";" << endl;
 			}
 		cout << endl;
 		}
-		
 	dotfile << "}" << endl;
 	dotfile.close();
 	
@@ -104,6 +78,7 @@ void Dag::print(ostream &out)
 	ostringstream imageOpeningCommand;
 	imageOpeningCommand << "ristretto dag" << dotfileNumber << ".png" << "&";
 	system(imageOpeningCommand.str().c_str());
+	return out;
 }
 
 void Dag::addEdges()
@@ -163,18 +138,53 @@ void Dag::dfs(int sourceVertex)
 	colorList[sourceVertex] = BLACK;
 	dfsOutputList.push_back(sourceVertex);
 	
-	for(int j = 0; j< graph.fanout(nodes[sourceVertex]); j++)
+	for(list<int>::iterator it = adjList[sourceVertex].begin(); it != adjList[sourceVertex].end(); ++it)
 		{
-		IntBoolGraph::arc_iterator edge = graph.output(nodes[sourceVertex],j);
-		IntBoolGraph::iterator toNode = graph.arc_to(edge);
-		if ( colorList[*toNode] != BLACK )
-			dfs(*toNode);
+			if ( colorList[*it] != BLACK )
+				dfs(*it);
 		}
-	cout << endl;
 }
 
 bool Dag::doesCycleExist()
 {
-	NodeVector topo = graph.dag_sort();
-	return topo.empty();
+	for(int i=0;i<numberOfVertices;i++)
+	{
+		colorList[i] = WHITE;
+	}
+	
+	for(int i=0;i<numberOfVertices;i++)
+	{
+		if( colorList[i] == WHITE )
+			{
+				if ( visit(i) )
+					return true;
+			}
+	}
+	return false;	
 }
+
+bool Dag::visit(int v)
+{
+	int u;
+	colorList[v] = GREY;
+	
+	for (list<int>::iterator it = adjList[v].begin(); it != adjList[v].end(); ++it)
+		{
+			u = *it;
+			
+			if ( colorList[u] == GREY)
+				{
+				cout << "Edge " << v << "," << u << " is involved in cycle" << endl;
+				return true;
+				}
+			else if (colorList[u] == WHITE)
+				{
+					if ( visit(u) )
+						return true;
+				}
+		}
+	
+	colorList[v] = BLACK;
+	return false;
+}
+
